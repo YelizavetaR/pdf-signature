@@ -225,7 +225,7 @@
                     <tr>
                         <th rowspan="2" class="row__w"></th>
                         <th rowspan="2">
-                            <div class="button__round">
+                            <div class="button__round" id="select_pdf">
                                 <h3>Select PDF file</h3>
                             </div>
                         </th>
@@ -252,6 +252,7 @@
         </div>
         <br>
         or drop PDF here
+        <input id="file-input" type="file" name="name" style="display: none;" accept=".pdf" onchange="sign_pdf(this)" />
     </div>
 
     <div class="footer">
@@ -262,7 +263,17 @@
 <script>
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
+
+        $('#select_pdf').on('click', function() {
+            $('#file-input').trigger('click');
+        });
     });
+
+    function sign_pdf(e) {
+        if (e.value != "") {
+            console.log(e.value);
+        }
+    }
 </script>
 
 </html>
